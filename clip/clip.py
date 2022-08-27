@@ -24,7 +24,7 @@ if packaging.version.parse(torch.__version__) < packaging.version.parse("1.7.1")
     warnings.warn("PyTorch version 1.7.1 or higher is recommended")
 
 
-__all__ = ["available_models", "load", "tokenize"]
+__all__ = ["available_models", "download", "load", "tokenize"]
 _tokenizer = _Tokenizer()
 
 _MODELS = {
@@ -41,6 +41,16 @@ _MODELS = {
 
 
 def download(url: str, root: str):
+    """Download a CLIP model
+
+    Parameters
+    ----------
+    url : str
+        The URL to a model checkpoint to download
+
+    root: str
+        path to download the model files.
+    """    
     os.makedirs(root, exist_ok=True)
     filename = os.path.basename(url)
 
